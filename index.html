@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="./css/1.css">
+		<title>吴伟杰的轨道</title>
+	</head>
+	<body>
+		<div id="container">
+			<div id="img-container">
+				<div id="C-img">
+					<ul id="L-img">
+						<li id="imglist">
+							<div id="imgcontent">
+								<img src="img/1.jpeg" alt="">
+							</div>
+						</li>
+						<li id="imglist">
+							<div id="imgcontent">
+								<img src="img/2.jpeg" alt="">
+							</div>
+						</li>
+						<li id="imglist">
+							<div id="imgcontent">
+								<img src="img/3.jpg" alt="">
+							</div>
+						</li>
+						<li id="imglist">
+							<div id="imgcontent">
+								<img src="img/4.jpeg" alt="">
+							</div>
+						</li>
+						<li id="imglist">
+							<div id="imgcontent">
+								<img src="img/5.jpeg" alt="">
+							</div>
+						</li>
+						<li id="imglist">
+							<div id="imgcontent">
+								<img src="img/6.jpeg" alt="">
+							</div>
+						</li>
+						<li id="imglist">
+							<div id="imgcontent">
+								<img src="img/6.jpeg" alt="">
+							</div>
+						</li>
+						<li id="imglist">
+							<div id="imgcontent">
+								<img src="img/6.jpeg" alt="">
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="cj" id="Tcut">
+				裁剪
+			</div>
+			<div id="track-container">
+				<div id="track-one"></div>
+				<div id="track-time">
+					<span>00:00:00</span>
+					<span>00:01:00</span>
+					<span>00:02:00</span>
+					<span>00:03:00</span>
+					<span>00:04:00</span>
+					<span>00:05:00</span>
+					<span>00:06:00</span>
+					<span>00:07:00</span>
+					<span>00:08:00</span>
+					<span>00:09:00</span>
+					<span>00:10:00</span>
+					<span id="end">00:11:00</span>
+				</div>
+				<div class="iii">
+					<img class="q7" src="img/45.png"/>
+					<img class="q7" src="img/45.png"/>
+					<img class="q7" src="img/45.png"/>
+					<img class="q7" src="img/45.png"/>
+					<img class="q7" src="img/45.png"/>
+					<img class="q7" src="img/45.png"/>
+					<img class="q7" src="img/45.png"/>
+					<img class="q7" src="img/45.png"/>
+					<img class="q7" src="img/45.png"/>
+					<img class="q7" src="img/45.png"/>
+				</div>
+				<div id="track-img" ondragover="allowDrag(event)" ondrop="drop(event)"></div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var num=0,cutone=0;
+		        //拖动已开始 
+		        function drag(ev) {
+		            ev.dataTransfer.setData("Text", ev.target.id);
+					console.log("拖动开始");
+		        }
+		        // 拖动过程
+		        function drop(ev) {
+		            //允许其他元素拖到此处
+		            ev.preventDefault();
+		            // 获取要拖放的元素的id
+					console.log("拖动过程");
+					console.log(event);
+		            var id = ev.dataTransfer.getData("Text");
+		            // 将一个标签添加到另一个标签中，可以使用appendChild
+					console.log(id);
+		           // ev.target.appendChild(document.getElementById(id));
+				  // document.getElementById("track-img").innerHTML="<img src="+ id +">";
+				   var d1=document.getElementById("track-img");
+				   var img=document.createElement("img");
+				   img.src=id;
+				   img.id="No"+num;
+				   num++;
+				   d1.appendChild(img);
+		        }
+		        // 拖动结束
+		        function allowDrag(ev) {
+		            //允许其他元素拖到此处
+		            ev.preventDefault()
+		        }
+				//响应剪切功能
+				document.getElementById("Tcut").onclick = function () {
+					cutone=cutone+1;
+					console.log(cutone);
+					if(cutone % 2 !== 0){
+						one();
+					}else{
+						document.getElementById('Tcut').style.color = '#fff';
+					}
+				}
+				function getPosition(el){
+				    var left = el.offsetLeft;
+					var top = el.offsetTop;
+				    var parent = el.offsetParent;
+				    while(parent != null){
+				        left += parent.offsetLeft;
+				        top += parent.offsetTop;
+				        parent = parent.offsetParent;
+				    }
+					console.log(left,top);
+				    return {"left":left,"top":top};
+				    }
+				function one(){
+					document.getElementById('Tcut').style.color = '#000';
+					for(var i=0;i<num;i++){
+						document.getElementById("No"+i).onclick = function(){
+							
+						}
+					}
+				}
+				
+		    </script>
+	
+	</body>
+</html>
+<!--  -->
